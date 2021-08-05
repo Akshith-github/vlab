@@ -1,76 +1,8 @@
-<div class="container" style="padding: 8px 2px;">
-    <!-- Start: Card With Tab Navigation -->
-    <div class="card" style="margin-top: 10px;">
-        <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                <li class="nav-item">
-                    <a
-                        class="nav-link active"
-                        id="item-2-1-tab"
-                        role="tab"
-                        aria-controls="item-2-1"
-                        aria-selected="true"
-                        href="#item-2-1"
-                        data-bs-toggle="tab">Roles</a>
-                </li>
-                <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        id="item-2-2-tab"
-                        role="tab"
-                        aria-controls="item-2-2"
-                        aria-selected="false"
-                        href="#item-2-2"
-                        data-bs-toggle="tab">Classes Enrolled and Students</a>
-                </li>
-                <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        id="item-2-3-tab"
-                        role="tab"
-                        aria-controls="item-2-3"
-                        aria-selected="false"
-                        href="#item-2-3"
-                        data-bs-toggle="tab">Third Item</a>
-                </li>
-            </ul>
-        </div>
-        <div class="card-body">
-            <div id="nav-tabContent" class="tab-content">
-                <div
-                    id="item-2-1"
-                    class="tab-pane fade show active"
-                    role="tabpanel"
-                    aria-labelledby="item-2-1-tab">
-                    <h4>Roles</h4>
-                    <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-                        at eget metus.</p>
-                </div>
-                <div
-                    id="item-2-2"
-                    class="tab-pane fade"
-                    role="tabpanel"
-                    aria-labelledby="item-2-2-tab">
-                    <h4>Second Item Title</h4>
-                    <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-                        at eget metus.</p>
-                    <button class="btn btn-primary" type="button">Button</button>
-                </div>
-                <div
-                    id="item-2-3"
-                    class="tab-pane fade"
-                    role="tabpanel"
-                    aria-labelledby="item-2-3-tab">
-                    <h4>Third Item Title</h4>
-                    <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,
-                        dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-                        at eget metus.</p>
-                    <button class="btn btn-primary" type="button">Button</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End: Card With Tab Navigation -->
-</div>
+{{form.Email(class="form-control form-control-user",type="email", id="exampleInputEmail-1",placeholder="Enter Email Address...")}}
+<!-- aria-describedby="emailHelp" -->
+
+{{form.Password(class="form-control form-control-user",type="password",id="exampleInputPassword",placeholder="Password")}}
+
+{{form.remember_me(class="form-check-input custom-control-input",type="checkbox", id="formCheck-1")}}
+
+{{form.submit(class="btn btn-primary d-block btn-user w-100")}}
