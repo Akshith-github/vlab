@@ -1,3 +1,28 @@
+## Table of contents
+- [Table of contents](#table-of-contents)
+- [General info](#general-info)
+- [Technologies](#technologies)
+- [Setup](#setup)
+
+## General info
+Intial implementation just rendering html pages.
+	
+## Technologies
+Project is created with:
+* Flask version: 0.12.2
+* Bootstrap: 5.0
+* jQuery: 3.6.0
+	
+## Setup
+Heroku Setup process
+* Create an Heroku app
+* configs
+* local run trials
+```
+
+```
+
+
 in Windows:
     time.clock=>time.perf_counter
 
