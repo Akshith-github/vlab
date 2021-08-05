@@ -24,12 +24,18 @@ class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+    @classmethod
+    def init_app(cls,app):
+        print("Devlopment mode")
 
 
 class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or \
         'sqlite://'
+    @classmethod
+    def init_app(cls, app):
+        print("TestingConfig mode")
 
 
 class ProductionConfig(Config):
@@ -37,6 +43,8 @@ class ProductionConfig(Config):
         'sqlite:///' + os.path.join(basedir, 'data.sqlite')
     @classmethod
     def init_app(cls, app):
+        print("ProductionConfig mode")
+
         Config.init_app(app)
 
         # email errors to the administrators
@@ -63,6 +71,7 @@ class HerokuConfig(ProductionConfig):
 
     @classmethod
     def init_app(cls, app):
+        print("HerokuConfig mode")
         ProductionConfig.init_app(app)
 
         # handle reverse proxy server headers
