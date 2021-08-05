@@ -1,5 +1,5 @@
 vlabvenv
 __pycache__
 .idea
-
 *.sqlite
+data-dev.sqlite
