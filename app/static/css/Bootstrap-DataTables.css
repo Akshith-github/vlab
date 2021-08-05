@@ -1,0 +1,45 @@
+.bootstrap_datatables {
+  min-height: 100vh;
+}
+
+.hideCourseTable {
+  display: none;
+}
+
+.input-group {
+  padding: 6px 12px;
+}
+
+.courseImg {
+  text-align: center;
+}
+
+#logo {
+  text-align: center;
+  font-size: xx-large;
+  color: aliceblue;
+}
+
+#logobox {
+  margin-bottom: 1rem !important;
+  /*padding-bottom: 1rem;*/
+  background-color: var(--bs-blue);
+}
+
+#nav-container-log {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+body {
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+#navContainer {
+  padding-left: 0px;
+  margin-left: 2rem;
+  width: 98%;
+}
+

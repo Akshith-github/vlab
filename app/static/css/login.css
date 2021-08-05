@@ -1,0 +1,14 @@
+@media only screen and  (max-width: 767px) {
+  .borderNavLog {
+    border: 1px solid rgba(50,46,46,0.2);
+  }
+}
+
+@media only screen and  (max-width: 767px) {
+  #navbarspan {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+
