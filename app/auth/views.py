@@ -6,26 +6,6 @@ from ..models import User
 from ..email import send_email
 from .forms import LoginForm, RegistrationForm
 
-def onLogin(loginFormObj,**kwarg):
-    # print(loginFormObj.data)
-    user = User.query.filter_by(email=loginFormObj.email.data.lower()).first()
-    if user is not None and user.verify_password(loginFormObj.password.data):
-        login_user(user, loginFormObj.remember_me.data)
-        next = request.args.get('next')
-        if next is None or not next.startswith('/'):
-            next = url_for('main.index')
-        return redirect(next)
-    flash('Invalid email or password.')
-    return render_template('login.html', loginFormObj=loginFormObj,**kwarg)
-
-def onReg(RegistrationFormObj,**kwarg):
-    user = User(email=RegistrationFormObj.email.data.lower(),
-            username=RegistrationFormObj.username.data,
-            password=RegistrationFormObj.password.data)
-    db.session.add(user)
-    db.session.commit()
-    flash('You can now login.')
-    return redirect(url_for('/auth.index'))
 
 @auth.route('/', methods=['GET','POST'])
 def index(loginFormObj=None):
@@ -39,34 +19,45 @@ def index(loginFormObj=None):
     if RegistrationFormObj.validate_on_submit():
         return onReg(RegistrationFormObj,loginFormObj=loginFormObj) """
     return render_template('login.html', loginFormObj=loginFormObj,
-        RegistrationFormObj=RegistrationFormObj)
+        RegistrationFormObj=RegistrationFormObj,slide2="active")
     # return render_template('auth/login.html', form=form)
 
 
-@auth.route('/login', methods=['POST'])
+@auth.route('/login', methods=['GET','POST'])
 def login():
     loginFormObj = LoginForm()
     RegistrationFormObj = RegistrationForm()
-    if loginFormObj.validate_on_submit():
-        user = User.query.filter_by(email=loginFormObj.email.data.lower()).first()
-        if user is not None and user.verify_password(loginFormObj.password.data):
-            login_user(user, loginFormObj.remember_me.data)
-            next = request.args.get('next')
-            if next is None or not next.startswith('/'):
-                next = url_for('main.index')
-            return redirect(next)
-        flash('Invalid email or password.')
-    return render_template('login.html', loginFormObj=loginFormObj,RegistrationFormObj=RegistrationFormObj)
+    if(request.method=='POST'):
+        if loginFormObj.validate_on_submit():
+            user = User.query.filter_by(email=loginFormObj.email.data.lower()).first()
+            if user is not None and user.verify_password(loginFormObj.password.data):
+                login_user(user, loginFormObj.remember_me.data)
+                next = request.args.get('next')
+                if next is None or not next.startswith('/'):
+                    next = url_for('main.index')
+                return redirect(next)
+            flash('Invalid email or password.')
+    return render_template('login.html', loginFormObj=loginFormObj,RegistrationFormObj=RegistrationFormObj,slide2="active")
     # return redirect(url_for('/auth.index',loginFormObj=loginFormObj))
 
 
-@auth.route('/register', methods=['POST'])
+@auth.route('/register', methods=['GET','POST'])
 def register():
     loginFormObj = LoginForm()
     RegistrationFormObj = RegistrationForm()
-    if RegistrationFormObj.validate_on_submit():
-        return onReg(RegistrationFormObj,loginFormObj=loginFormObj) 
-    return redirect(url_for('/auth.index'))
+    if(request.method=='POST'):
+        if RegistrationFormObj.validate_on_submit():
+            user = User(email=RegistrationFormObj.email.data.lower(),
+                username=RegistrationFormObj.username.data,
+                password=RegistrationFormObj.password.data)
+            db.session.add(user)
+            db.session.commit()
+            flash('You can now login.')
+            return redirect(url_for('/auth.index'))
+        flash("registration failed")
+    return render_template('login.html', loginFormObj=loginFormObj,RegistrationFormObj=RegistrationFormObj,
+    slide3="active")
+    # return redirect(url_for('/auth.index'))
 
 @auth.route('/logout')
 @login_required
@@ -74,3 +65,24 @@ def logout():
     logout_user()
     flash('You have been logged out.')
     return redirect(url_for('/auth.index'))
+
+""" def onLogin(loginFormObj,**kwarg):
+    # print(loginFormObj.data)
+    user = User.query.filter_by(email=loginFormObj.email.data.lower()).first()
+    if user is not None and user.verify_password(loginFormObj.password.data):
+        login_user(user, loginFormObj.remember_me.data)
+        next = request.args.get('next')
+        if next is None or not next.startswith('/'):
+            next = url_for('main.index')
+        return redirect(next)
+    flash('Invalid email or password.')
+    return render_template('login.html', loginFormObj=loginFormObj,**kwarg) """
+
+""" def onReg(RegistrationFormObj,**kwarg):
+    user = User(email=RegistrationFormObj.email.data.lower(),
+            username=RegistrationFormObj.username.data,
+            password=RegistrationFormObj.password.data)
+    db.session.add(user)
+    db.session.commit()
+    flash('You can now login.')
+    return redirect(url_for('/auth.index')) """

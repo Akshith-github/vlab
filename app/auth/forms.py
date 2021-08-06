@@ -1,8 +1,10 @@
 from flask_wtf import FlaskForm
+from flask import flash
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
 from wtforms import ValidationError
 from ..models import User
+import re
 
 
 class LoginForm(FlaskForm):
@@ -25,12 +27,18 @@ class RegistrationForm(FlaskForm):
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data.lower()).first():
+            flash('Email already registered')
             raise ValidationError('Email already registered.')
+        if not re.match("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@klu\.ac\.in$", field.data):
+            flash('Not valid klu mail id')
+            raise ValidationError('Mail id provided did not match pattern.')
 
     def validate_username(self, field):
         if User.query.filter_by(username=field.data).first():
+            flash('Username already in use.')
             raise ValidationError('Username already in use.')
     
     def validate_password2(self, field):
         if field.data!=self.data["password"]:
+            flash('passwords are not same')
             raise ValidationError('Passwords are not same.')

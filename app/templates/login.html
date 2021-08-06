@@ -68,12 +68,15 @@
             </div>
         </div>
     </nav><!-- End: Navigation with Button -->
+    <div class="container" style="width:60%;padding:10px">
+        {% include'warnings.html' %}
+    </div>
     <div>
         <div class="row justify-content-center" style="margin: 0px 12px;">
             <div class="col-md-9 col-lg-12 col-xl-10">
                 <div class="carousel slide" data-bs-ride="carousel" data-bs-interval="false" id="carousel-1">
                     <div class="carousel-inner">
-                        <div class="carousel-item active" id="forgotPwd">
+                        <div class="carousel-item {{slide1}}" id="forgotPwd">
                             <div class="card shadow-lg o-hidden border-0 my-5">
                                 <div class="card-body p-0">
                                     <div class="row">
@@ -90,16 +93,16 @@
                                                     <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"></div><button class="btn btn-primary d-block btn-user w-100" type="submit">Reset Password</button>
                                                 </form>
                                                 <div class="text-center">
-                                                    <hr><a class="small goToReg">Create an Account!</a>
+                                                    <hr><a class="small goToReg" role="button">Create an Account!</a>
                                                 </div>
-                                                <div class="text-center"><a class="small goToLogin">Already have an account? Login!</a></div>
+                                                <div class="text-center"><a class="small goToLogin" role="button">Already have an account? Login!</a></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item" id="LoginSlide">
+                        <div class="carousel-item {{slide2}}" id="LoginSlide">
                             <div class="card shadow-lg o-hidden border-0 my-5">
                                 <div class="card-body p-0">
                                     <div class="row">
@@ -135,15 +138,15 @@
                                                     <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Login with Google</a>
                                                     <hr>
                                                 </form>
-                                                <div class="text-center"><a class="small goToFor">Forgot Password?</a></div>
-                                                <div class="text-center"><a class="small goToReg">Create an Account!</a></div>
+                                                <div class="text-center"><a class="small goToFor" role="button">Forgot Password?</a></div>
+                                                <div class="text-center"><a class="small goToReg" role="button">Create an Account!</a></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item {{slide3}}">
                             <div class="card shadow-lg o-hidden border-0 my-5" style="height: 90%;">
                                 <div class="card-body p-0" id="registerSlide">
                                     <div class="row">
@@ -168,11 +171,9 @@
                                                     <div class="mb-3">
                                                         <!-- <input class="form-control form-control-user" type="email" id="RegInputEmail" aria-describedby="emailHelp" placeholder="Email Address" name="email"> -->
                                                         {{ RegistrationFormObj.email(
-                                                            class="form-control form-control-user",type="email",id="RegInputEmail",placeholder="Enter your klu mail: john123@klu.ac.in",required="",pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@klu.ac.in") }}
-                                                        <div class="invalid-feedback">
-                                                            Provide Klu mail address
-                                                            </div>
+                                                            class="form-control form-control-user",type="email",id="RegInputEmail",placeholder="Enter your klu mail: john123@klu.ac.in",required="") }}
                                                     </div>
+                                                    <div id="result" class="mb-3"></div>
                                                     <div class="row mb-3">
                                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                                             <!-- <input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password"> -->
@@ -199,12 +200,12 @@
                                                     </div>
                                                     <!-- <button class="btn btn-primary d-block btn-user w-100" type="submit">Register Account</button> -->
                                                     {{ RegistrationFormObj.submit(
-                                                        class="btn btn-primary d-block btn-user w-100") }}
+                                                        class="btn btn-primary d-block btn-user w-100",id="RegSubmit") }}
                                                     <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Register with Google</a>
                                                     <hr>
                                                 </form>
-                                                <div class="text-center"><a class="small goToFor">Forgot Password?</a></div>
-                                                <div class="text-center"><a class="small goToLogin">Already have an account? Login!</a></div>
+                                                <div class="text-center"><a class="small goToFor" role="button">Forgot Password?</a></div>
+                                                <div class="text-center"><a class="small goToLogin" role="button">Already have an account? Login!</a></div>
                                             </div>
                                         </div>
                                     </div>
@@ -218,9 +219,9 @@
                         <!-- Start: Next --><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a><!-- End: Next -->
                     </div>
                     <ol class="carousel-indicators">
-                        <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="active"></li>
-                        <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>
-                        <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>
+                        <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="{{slide1}}"></li>
+                        <li data-bs-target="#carousel-1" data-bs-slide-to="1" class="{{slide2}}"></li>
+                        <li data-bs-target="#carousel-1" data-bs-slide-to="2" class="{{slide3}}"></li>
                     </ol>
                 </div>
             </div>
@@ -309,6 +310,32 @@
     <script src="static/js/button.js?h=680b4117b702922add05e60855cb5960"></script>
     <script src="static/js/login.js?h=366aa5c761871fdf64f292a061bd5cf6"></script>
     <script src="static/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0"></script>
+    <script>
+        function validateEmail(email) {
+        const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@klu\.ac.in$/;
+        return re.test(email);
+        }
+
+        function validate() {
+        const $result = $("#result");
+        const email = $("#RegInputEmail").val();
+        $result.text("");
+        const $button = $("#RegSubmit")
+
+        if (validateEmail(email)) {
+            $result.text(email + " is valid klu mail id");
+            $result.css("color", "green");
+            $button.disabled = false
+        } else {
+            $result.text(email + " is not valid klu mail id");
+            $result.css("color", "red");
+            $button.disabled = true
+        }
+        return false;
+        }
+
+        $("#RegInputEmail").on("input", validate);
+            </script>
 </body>
 
 </html>
