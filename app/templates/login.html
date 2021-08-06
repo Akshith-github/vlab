@@ -62,7 +62,9 @@
                             <div class="d-flex align-items-center borderNavLog"><label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search" style="padding: 12px;"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" style="width: 8rem;padding: 3px;" placeholder="search for user"></div>
                         </form>
                     </li>
-                </ul><span class="navbar-text actions borderNavLog" id="navbarspan"> <a class="login" href="index.html">Log In</a><a class="btn btn-light action-button goToReg" role="button">Sign Up</a></span>
+                </ul><span class="navbar-text actions borderNavLog" id="navbarspan"> 
+                    <a class="login goToLogin" role="button">Log In</a>
+                    <a class="btn btn-light action-button goToReg" role="button">Sign Up</a></span>
             </div>
         </div>
     </nav><!-- End: Navigation with Button -->
@@ -111,25 +113,25 @@
                                                     <p>Login using your&nbsp;Kalasalingam Mail !!!<br></p>
                                                 </div>
                                                 <form class="user" method="post">
-                                                    {{form.hidden_tag()}}
+                                                    {{loginFormObj.hidden_tag()}}
                                                     <div class="mb-3">
                                                         <!-- <input class="form-control form-control-user" type="email" id="exampleInputEmail-1" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"> -->
-                                                        {{form.Email(class="form-control form-control-user",type="email",id="exampleInputEmail-1",aria_describedby="emailHelp",placeholder="Enter Email Address...")}}
+                                                        {{loginFormObj.email(class="form-control form-control-user",type="email",id="exampleInputEmail-1",aria_describedby="emailHelp",placeholder="Enter Email Address...",required="",inputmode="email")}}
                                                     </div>
                                                     <div class="mb-3">
                                                         <!-- <input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"> -->
-                                                        {{form.Password(class="form-control form-control-user",type="password",id="exampleInputPassword",placeholder="Password")}}
+                                                        {{loginFormObj.password(class="form-control form-control-user",type="password",id="exampleInputPassword",placeholder="Password",required="",inputmode="password")}}
                                                     </div>
                                                     <div class="mb-3">
                                                         <div class="custom-control custom-checkbox small">
                                                             <div class="form-check">
                                                                 <!-- <input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"> -->
-                                                                {{form.remember_me(class="form-check-input custom-control-input",type="checkbox", id="formCheck-1")}}
+                                                                {{loginFormObj.remember_me(class="form-check-input custom-control-input",type="checkbox", id="formCheck-1")}}
                                                                 <label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
                                                         </div>
                                                     </div>
                                                     <!-- <button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button> -->
-                                                    {{form.submit(class="btn btn-primary d-block btn-user w-100")}}
+                                                    {{loginFormObj.submit(class="btn btn-primary d-block btn-user w-100")}}
                                                     <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Login with Google</a>
                                                     <hr>
                                                 </form>
