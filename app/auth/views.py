@@ -6,6 +6,22 @@ from ..models import User
 from ..email import send_email
 from .forms import LoginForm, RegistrationForm
 
+@auth.before_app_request
+def before_request():
+    if current_user.is_authenticated:
+        if  request.path in ['/auth/login','/auth/','/auth/register']:
+            flash("User already logged in")
+            flash("Log out to visit the authentication page!!")
+            return redirect(url_for('main.index'))
+            # return render_template('index.html',pageDashboard="active" )
+            # current_user.ping()
+            # if not current_user.confirmed \
+            #         and request.endpoint \
+            #         and request.blueprint != 'auth' \
+            #         and request.endpoint != 'static':
+            #     return redirect(url_for('auth.unconfirmed'))
+            
+
 
 @auth.route('/', methods=['GET','POST'])
 def index(loginFormObj=None):
@@ -33,6 +49,7 @@ def login():
             if user is not None and user.verify_password(loginFormObj.password.data):
                 login_user(user, loginFormObj.remember_me.data)
                 next = request.args.get('next')
+                print(next,"\n"*8)
                 if next is None or not next.startswith('/'):
                     next = url_for('main.index')
                 return redirect(next)

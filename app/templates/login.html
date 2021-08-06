@@ -51,26 +51,7 @@
 
 <body class="bg-gradient-primary">
     <!-- Start: Navigation with Button -->
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="width: 100%;padding: 10px 0px 5px 0px ;">
-        <div class="container" id="navContainer1"><a class="navbar-brand float-start" style="background: var(--bs-blue);color: var(--bs-white);padding: 5px 10px;border-radius: 4px;margin: 0px;"><i class="fas fa-atom"></i>&nbsp; Vlab</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link borderNavLog" href="blank.html">&lt;Code Ground&gt;</a></li>
-                    <li class="nav-item"><a class="nav-link borderNavLog" style="color: #465765;" href="courses.html">labs</a></li>
-                    <li class="nav-item">
-                        <form class="me-auto search-form" target="_self" style="margin: 0px 0px;margin-right: 2rem !important;width: 100%;">
-                            <div class="d-flex align-items-center borderNavLog"><label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search" style="padding: 12px;"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" style="width: 8rem;padding: 3px;" placeholder="search for user"></div>
-                        </form>
-                    </li>
-                </ul><span class="navbar-text actions borderNavLog" id="navbarspan"> 
-                    <a class="login goToLogin" role="button">Log In</a>
-                    <a class="btn btn-light action-button goToReg" role="button">Sign Up</a></span>
-            </div>
-        </div>
-    </nav><!-- End: Navigation with Button -->
-    <div class="container" style="width:60%;padding:10px">
-        {% include'warnings.html' %}
-    </div>
+    {% include 'topNav.html' %}<!-- End: Navigation with Button -->
     <div>
         <div class="row justify-content-center" style="margin: 0px 12px;">
             <div class="col-md-9 col-lg-12 col-xl-10">
@@ -115,7 +96,7 @@
                                                     <h4 class="text-dark mb-4">Welcome Back!<br></h4>
                                                     <p>Login using your&nbsp;Kalasalingam Mail !!!<br></p>
                                                 </div>
-                                                <form class="user" method="post" action="{{ url_for('/auth.login') }}">
+                                                <form class="user" method="post" action="{{ url_for('/auth.login') }}?next={{request.args.next}}">
                                                     {{loginFormObj.hidden_tag()}}
                                                     <div class="mb-3">
                                                         <!-- <input class="form-control form-control-user" type="email" id="exampleInputEmail-1" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"> -->
@@ -123,14 +104,25 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <!-- <input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"> -->
-                                                        {{loginFormObj.password(class="form-control form-control-user",type="password",id="exampleInputPassword",placeholder="Password",required="",inputmode="password")}}
+                                                        {{loginFormObj.password(class="form-control form-control-user",type="password",id="LogInputPassword",placeholder="Password",required="",inputmode="password")}}
                                                     </div>
                                                     <div class="mb-3">
-                                                        <div class="custom-control custom-checkbox small">
-                                                            <div class="form-check">
-                                                                <!-- <input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"> -->
-                                                                {{loginFormObj.remember_me(class="form-check-input custom-control-input",type="checkbox", id="formCheck-1")}}
-                                                                <label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
+                                                        <div class="row">
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <div class="custom-control custom-checkbox small">
+                                                                <div class="form-check">
+                                                                    <!-- <input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"> -->
+                                                                    {{loginFormObj.remember_me(class="form-check-input custom-control-input",type="checkbox", id="formCheck-1")}}
+                                                                    <label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label>
+                                                                </div></div>
+                                                            </div>
+                                                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                <div class="mb3 custom-control custom-checkbox small">
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input custom-control-input" type="checkbox" id="showPasswordLog">
+                                                                        <label class="form-check-label custom-control-label" for="showPasswordLog">Show Password</label>
+                                                                    </div></div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <!-- <button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button> -->
@@ -158,7 +150,7 @@
                                                 <div class="text-center">
                                                     <h4 class="text-dark mb-4">Create an Account!</h4>
                                                 </div>
-                                                <form class="user" method="post" action="{{ url_for('/auth.register') }}"  >
+                                                <form class="user" method="post" action="{{ url_for('/auth.register') }}?next={{request.args.next}}">
                                                     {{ RegistrationFormObj.hidden_tag() }}
                                                     <div class="row mb-3">
                                                         <div class="mb-3">
@@ -178,12 +170,13 @@
                                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                                             <!-- <input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password"> -->
                                                             {{ RegistrationFormObj.password(
-                                                                class="form-control form-control-user",type="password",id="RegPasswordInput",placeholder="Password") }}
+                                                                class="form-control form-control-user",type="password",id="RegPasswordInput",placeholder="Password",
+                                                                inputmode="password") }}
                                                         </div>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-6" style="text-align: center;">
                                                             <!-- <input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Repeat Password" name="password_repeat"> -->
                                                             {{ RegistrationFormObj.password2(
-                                                                class="form-control form-control-user",type="password",id="RegRepeatPasswordInput",placeholder="Repeat Password" ) }}
+                                                                class="form-control form-control-user",type="password",id="RegRepeatPasswordInput",placeholder="Repeat Password",inputmode="password" ) }}
                                                             <style>
                                                                 #RegRepeatPasswordInput {
                                                                     data-bv-identical:"true";
@@ -197,6 +190,13 @@
                                                                 }
                                                             </style>
                                                         </div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <div class="custom-control custom-checkbox small">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input custom-control-input showPassword" type="checkbox" id="showPasswordReg">
+                                                                <label class="form-check-label custom-control-label" for="showPasswordReg">show passwords</label>
+                                                            </div></div>
                                                     </div>
                                                     <!-- <button class="btn btn-primary d-block btn-user w-100" type="submit">Register Account</button> -->
                                                     {{ RegistrationFormObj.submit(
@@ -214,10 +214,20 @@
                         </div>
                     </div>
                     
-                    <div>
-                        <!-- Start: Previous --><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><!-- End: Previous -->
-                        <!-- Start: Next --><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a><!-- End: Next -->
+                    <div class="carouselControlsCustom">
+                        <!-- Start: Previous -->
+                        <a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><!-- End: Previous -->
+                        <!-- Start: Next -->
+                        <a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a><!-- End: Next -->
                     </div>
+                    <style>
+                        .carouselControlsCustom>*{
+                            display: none !important;
+                        }
+                    </style>
+                    
                     <ol class="carousel-indicators">
                         <li data-bs-target="#carousel-1" data-bs-slide-to="0" class="{{slide1}}"></li>
                         <li data-bs-target="#carousel-1" data-bs-slide-to="1" class="{{slide2}}"></li>
@@ -229,7 +239,7 @@
     </div>
     <div>
         <!-- Start: Features Clean -->
-        <section class="features-clean">
+        <section class="features-clean bg-white shadow">
             <div class="container">
                 <!-- Start: Intro -->
                 <div class="intro">
@@ -308,7 +318,6 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="static/js/Bootstrap-DataTables.js?h=ae06441082f660b204a3db1fc70b2970"></script>
     <script src="static/js/button.js?h=680b4117b702922add05e60855cb5960"></script>
-    <script src="static/js/login.js?h=366aa5c761871fdf64f292a061bd5cf6"></script>
     <script src="static/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0"></script>
     <script>
         function validateEmail(email) {
@@ -336,6 +345,45 @@
 
         $("#RegInputEmail").on("input", validate);
             </script>
+        
+    <script src="static/js/login.js?h=366aa5c761871fdf64f292a061bd5cf6"></script>
+    <script>
+        document.querySelector("#showPasswordReg").addEventListener(
+  "click", function(){
+    if(document.querySelector("#showPasswordReg").checked){
+      document.querySelector("#RegPasswordInput").type="text"
+      document.querySelector("#RegRepeatPasswordInput").type="text"
+    }
+    else{
+      document.querySelector("#RegPasswordInput").type="password"
+      document.querySelector("#RegRepeatPasswordInput").type="password"
+
+    }
+  }
+)
+
+document.querySelector("#showPasswordLog").addEventListener(
+  "click", function(){
+      if(document.querySelector("#showPasswordLog").checked){
+      document.querySelector("#LogInputPassword").type="text"
+      }
+      else{
+      document.querySelector("#LogInputPassword").type="password"
+      }
+  }
+  )
+
+$(document).ready(function(){
+    if(window.location.pathname==="/auth/login"){
+      $('#carousel-1').carousel(1)
+      console.log("/auth/login");
+    }
+    if(window.location.pathname==="/auth/register"){
+      $('#carousel-1').carousel(2)
+      console.log("/auth/register");
+    }
+});
+    </script>
 </body>
 
 </html>

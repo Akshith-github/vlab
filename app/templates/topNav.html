@@ -1,3 +1,4 @@
+{% if current_user.is_authenticated %}
 <nav class="navbar navbar-light navbar-expand sticky-top bg-white shadow mb-4 topbar static-top">
     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
         <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -77,7 +78,7 @@
             <li class="nav-item dropdown no-arrow">
                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">
                     {% if current_user.is_authenticated %}
-                    Profile Name (Logged in)
+                    {{ current_user.username }} (Logged in)
                     {% else %}
                     (Not logged in)
                     {% endif %}</span>
@@ -101,5 +102,27 @@
         </ul>
     </div>
 </nav>
-
+{% else %}
+<nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="width: 100%;padding: 10px 0px 5px 0px ;">
+    <div class="container" id="navContainer1">
+        <a class="navbar-brand float-start" style="background: var(--bs-blue);color: var(--bs-white);padding: 5px 10px;border-radius: 4px;margin: 0px;" role="button"
+        href="{{url_for('main.index')}}">
+            <i class="fas fa-atom"></i>&nbsp; Vlab</a>
+            <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item"><a class="nav-link borderNavLog" href="blank.html">&lt;Code Ground&gt;</a></li>
+                <li class="nav-item"><a class="nav-link borderNavLog" style="color: #465765;" href="courses.html">labs</a></li>
+                <li class="nav-item">
+                    <form class="me-auto search-form" target="_self" style="margin: 0px 0px;margin-right: 2rem !important;width: 100%;">
+                        <div class="d-flex align-items-center borderNavLog"><label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search" style="padding: 12px;"></i></label><input class="form-control search-field" type="search" id="search-field" name="search" style="width: 8rem;padding: 3px;" placeholder="search for user"></div>
+                    </form>
+                </li>
+            </ul><span class="navbar-text actions borderNavLog" id="navbarspan"> 
+                <a class="login goToLogin" role="button">Log In</a>
+                <a class="btn btn-light action-button goToReg" role="button">Sign Up</a></span>
+        </div>
+    </div>
+</nav>
+{% endif %}
 {% include 'warnings.html' %}
