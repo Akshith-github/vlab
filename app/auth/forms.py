@@ -42,3 +42,15 @@ class RegistrationForm(FlaskForm):
         if field.data!=self.data["password"]:
             flash('passwords are not same')
             raise ValidationError('Passwords are not same.')
+
+class ChangePasswordForm(FlaskForm):
+    old_password = PasswordField('Old password', validators=[DataRequired()])
+    password = PasswordField('New password', validators=[
+        DataRequired(), EqualTo('password2', message='Passwords must match.')])
+    password2 = PasswordField('Confirm new password',validators=[DataRequired()])
+    submit = SubmitField('Update Password')
+
+    def validate_password2(self, field):
+        if field.data!=self.data["password"]:
+            flash('passwords are not same')
+            raise ValidationError('Passwords are not same.')

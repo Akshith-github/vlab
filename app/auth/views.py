@@ -1,4 +1,4 @@
-from flask import render_template, redirect, request, url_for, flash
+from flask import render_template, redirect, request, url_for, flash,get_flashed_messages,session
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
 from .. import db
@@ -20,7 +20,7 @@ def before_request():
         and request.endpoint != 'static'\
         and request.path not in ['/auth/unconfirmed','/auth/logout','/auth/confirm']\
         and '/auth/confirm/' not in request.path:
-        print(request.path,"\n"*4)
+        # print(request.path,"\n"*4)
         return redirect(url_for('auth.unconfirmed'))
 
 
@@ -58,7 +58,7 @@ def login():
             if user is not None and user.verify_password(loginFormObj.password.data):
                 login_user(user, loginFormObj.remember_me.data)
                 next = request.args.get('next')
-                print(next,"\n"*8)
+                # print(next,"\n"*8)
                 if next is None or not next.startswith('/'):
                     next = url_for('main.index')
                 return redirect(next)
@@ -119,6 +119,27 @@ def resend_confirmation():
     # input()
     print('A new confirmation email has been sent to you by email.')
     return redirect(url_for('main.index'))
+
+@auth.route('/change-password', methods=['POST'])
+@login_required
+def change_password():
+    changePasswordFormObj = ChangePasswordForm()
+    msgs=""
+    if changePasswordFormObj.validate_on_submit():
+        if current_user.verify_password(changePasswordFormObj.old_password.data):
+            current_user.password = changePasswordFormObj.password.data
+            db.session.add(current_user)
+            db.session.commit()
+            # flash('Your password has been updated.')
+            msgs='Your password has been updated.'
+            # return redirect(url_for('main.index'))
+        else:
+            # flash('Invalid password.')
+            msgs='Invalid password.'
+    for msg in get_flashed_messages():
+        msgs+="\n"+msg
+    session['msg']=msgs
+    return redirect(url_for("main.profile"))
 
 """ def onLogin(loginFormObj,**kwarg):
     # print(loginFormObj.data)

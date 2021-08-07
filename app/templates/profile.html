@@ -131,18 +131,24 @@
                                             <div class="tab-pane active" role="tabpanel" id="tab-1">
                                                 <h4 class="text-primary small fw-bold"><span class="float-end"><i
                                                             class="fa fa-key"></i></span></h4>
-                                                <form>
-                                                    <div class="mb-3"><label class="form-label"
+                                                    
+                                                <form action="{{url_for('auth.change_password')}}" method="POST">
+                                                    {{changePasswordFormObj.hidden_tag()}}
+                                                    <div class="mb-3">
+                                                        <label class="form-label"
                                                             for="address"><strong>Current
-                                                                Password</strong><br></label><input class="form-control"
-                                                            type="password"></div>
+                                                                Password</strong><br></label>
+                                                        <!-- <input class="form-control" type="password"> -->
+                                                        {{changePasswordFormObj.old_password(class="form-control",placeholder="Current Password", type="password",inputmode="password",id="currentPassword",required="")}}
+                                                        </div>
                                                     <!-- Start: Password Strenght Checker - Ambrodu -->
                                                     <div class="form-group">
                                                         <label class="form-label"
                                                             for="address"><strong>New
                                                                 Password</strong><br></label>
-                                                        <input type="password" placeholder="New Password"
-                                                            class="form-control" id="passwordStrengthInput" />
+                                                        <!-- <input type="password" placeholder="New Password"
+                                                            class="form-control" id="passwordStrengthInput" /> -->
+                                                        {{changePasswordFormObj.password(class="form-control", type="password",inputmode="password",placeholder="New Password",id="passwordStrengthInput",required="")}}
                                                         <div>
                                                             <meter max="5" id="password-strength-meter"></meter>
                                                             <p id="password-strength-text"></p>
@@ -151,15 +157,17 @@
                                                     <div class="mb-3">
                                                         <label class="form-label"
                                                         for="address"><strong>Re-type New
-                                                            Password</strong><br></label><input class="form-control"
-                                                        id="ConfirmPassword" type="password">
+                                                            Password</strong><br></label>
+                                                        <!-- <input class="form-control" id="ConfirmPassword" type="password"> -->
+                                                        {{changePasswordFormObj.password2(class="form-control", type="password",inputmode="password",placeholder="Retype New Password",id="ConfirmPassword",required="")}}
                                                         <p id="Confirmpasswordtext" style="padding-top:4px"></p>
                                                     </div>
                                                     <!-- End: Password Strenght Checker - Ambrodu -->
                                                     <div class="mb-3"
                                                         style="margin: 16px 0px;/*transform: translate(0px) rotate(0deg) scale(1) skew(0deg);*/filter: hue-rotate(0deg) invert(0%);">
-                                                        <button class="btn btn-primary disabled btn-sm"
-                                                            type="submit" id="PwdSubmit">submit</button>
+                                                        <!-- <button class="btn btn-primary disabled btn-sm"
+                                                            type="submit" id="PwdSubmit">submit</button> -->
+                                                        {{changePasswordFormObj.submit(class="btn btn-primary disabled btn-sm", type="submit",id="PwdSubmit")}}
                                                     </div>
                                                 </form>
                                                 <!-- Start: Password Strenght Checker - Ambrodu -->
