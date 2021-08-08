@@ -5,7 +5,7 @@ from .. import db,flash2
 from ..models import User
 from ..email import send_email
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm, PasswordResetRequestForm,\
-    PasswordResetRequestForm, PasswordResetForm
+    PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
 
 @auth.before_app_request
 def before_request():
@@ -133,15 +133,17 @@ def change_password():
             current_user.password = changePasswordFormObj.password.data
             db.session.add(current_user)
             db.session.commit()
-            # flash('Your password has been updated.')
-            msgs='Your password has been updated.'
+            flash('Your password has been updated.')
+            # msgs='Your password has been updated.'
             # return redirect(url_for('main.index'))
         else:
-            # flash('Invalid password.')
-            msgs='Invalid password.'
-    for msg in get_flashed_messages():
-        msgs+="\n"+msg
-    session['msg']=msgs
+            flash('Invalid password.')
+            # msgs='Invalid password.'
+    # for msg in get_flashed_messages():
+        # msgs+="\n"+msg
+    # session['msg']=msgs
+    else:
+        flash("failed to change password!! try again !!")
     return redirect(url_for("main.profile"))
 
 
@@ -181,6 +183,35 @@ def password_reset(token):
     return render_template('reset-password.html',passwordResetFormObj=passwordResetFormObj)
 
 
+@auth.route('/change_email', methods=['POST'])
+@login_required
+def change_email_request():
+    changeEmailFormObj = ChangeEmailForm()
+    if changeEmailFormObj.validate_on_submit():
+        if current_user.verify_password(changeEmailFormObj.password.data):
+            new_email = changeEmailFormObj.email.data.lower()
+            token = current_user.generate_email_change_token(new_email)
+            send_email(new_email, 'Confirm your email address',
+                        'mail/change_email',
+                        user=current_user, token=token)
+            flash('An email with instructions to confirm your new email '
+                    'address has been sent to you.')
+            # return redirect(url_for('main.profile'))
+        else:
+            flash('Invalid email or password.')
+    return redirect(url_for('main.profile'))
+    # return render_template("profile.html", changeEmailFormObj=changeEmailFormObj)
+
+
+@auth.route('/change_email/<token>')
+@login_required
+def change_email(token):
+    if current_user.change_email(token):
+        db.session.commit()
+        flash('Your email address has been updated.')
+    else:
+        flash('Invalid request.')
+    return redirect(url_for('main.index'))
 
 """ def onLogin(loginFormObj,**kwarg):
     # print(loginFormObj.data)

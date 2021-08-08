@@ -185,15 +185,34 @@
                                             <div class="tab-pane" role="tabpanel" id="tab-2">
                                                 <h4 class="text-primary small fw-bold"><span class="float-end"><i
                                                             class="material-icons">email</i></span></h4>
-                                                <form>
-                                                    <div class="mb-3"><label class="form-label"
+                                                <form action="{{url_for('auth.change_email_request')}}" method="POST">
+                                                    {{changeEmailFormObj.hidden_tag()  }}
+                                                    <div class="mb-3">
+                                                        <div class="mb-3" style="margin: 6px 0px;">
+                                                            <label class="form-label"
                                                             for="address"><strong>New Email
-                                                                Address</strong><br></label><input class="form-control"
-                                                            type="password">
+                                                                Address</strong><br></label>
+                                                                <!-- <input class="form-control"
+                                                            type="email"> -->
+                                                                {{changeEmailFormObj.email(class="form-control",type="email",inputmode="email",required="",placeholder="example@gmail.com")}}
+                                                        </div>
+                                                        <div class="mb-3" style="margin: 6px 0px;">
+                                                            <!-- <h4 class="text-primary small fw-bold"><span class="float-end"><i
+                                                                class="fa fa-key"></i></span></h4> -->
+                                                            <label class="form-label"
+                                                                for="address"><strong>Current
+                                                                    Password
+                                                                    <span class="float-end"><i
+                                                                        class="fa fa-key"></i></span>
+                                                                </strong><br></label>
+                                                            <!-- <input class="form-control" type="password"> -->
+                                                            {{changeEmailFormObj.password(class="form-control",placeholder="Current Password", type="password",inputmode="password",id="currentPassword",required="")}}
+                                                        </div>
                                                         <div class="mb-3"
-                                                            style="margin: 16px 0px;/*transform: translate(0px) rotate(0deg) scale(1) skew(0deg);*/filter: hue-rotate(0deg) invert(0%);">
-                                                            <button class="btn btn-primary btn-sm"
-                                                                type="submit">submit</button>
+                                                            style="margin: 6px 0px;">
+                                                            <!-- <button class="btn btn-primary btn-sm"
+                                                                type="submit">submit</button> -->
+                                                                {{changeEmailFormObj.submit(class="btn btn-primary btn-sm")}}
                                                         </div>
                                                     </div>
                                                 </form>
