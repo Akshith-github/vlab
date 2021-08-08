@@ -1,11 +1,12 @@
-from flask import render_template, session, request, redirect, url_for, current_app,flash,session
+from flask import render_template, session, request, redirect, url_for, current_app,flash,session,abort
 from flask_login import login_user, logout_user, login_required, current_user
 from .. import db
 from ..models import User
 from ..email import send_email
 from . import main
 from .forms import NameForm
-from ..auth.forms import ChangePasswordForm
+from ..auth.forms import ChangePasswordForm,RegistrationForm
+from jinja2 import exceptions
 
 # @main.before_app_request
 # def before_request():
@@ -30,4 +31,9 @@ def profile():
 
 # @main.route('/<page>', methods=['GET'])
 # def renderPage(page):
-#     return render_template(page,current_user=current_user)
+#     try:
+#         return render_template(page,current_user=current_user,RegistrationFormObj=RegistrationForm())
+#     except exceptions.TemplateNotFound:
+#         abort(404)
+#     except:
+#         abort(500)

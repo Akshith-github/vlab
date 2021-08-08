@@ -1,17 +1,19 @@
 from flask import render_template, redirect, request, url_for, flash,get_flashed_messages,session
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
-from .. import db
+from .. import db,flash2
 from ..models import User
 from ..email import send_email
-from .forms import LoginForm, RegistrationForm, ChangePasswordForm
+from .forms import LoginForm, RegistrationForm, ChangePasswordForm, PasswordResetRequestForm,\
+    PasswordResetRequestForm, PasswordResetForm
 
 @auth.before_app_request
 def before_request():
     if current_user.is_authenticated and current_user.confirmed:
         if  request.path in ['/auth/login','/auth/','/auth/register','/auth/unconfirmed']:
+            flash2("User already logged in")
             flash("User already logged in")
-            flash("Log out to visit the authentication page!!")
+            flash2("Log out to visit the authentication page!!")
             return redirect(url_for('main.index'))
     if current_user.is_authenticated \
         and not current_user.confirmed \
@@ -44,7 +46,7 @@ def index(loginFormObj=None):
     if RegistrationFormObj.validate_on_submit():
         return onReg(RegistrationFormObj,loginFormObj=loginFormObj) """
     return render_template('login.html', loginFormObj=loginFormObj,
-        RegistrationFormObj=RegistrationFormObj,slide2="active")
+        RegistrationFormObj=RegistrationFormObj,slide2="active",passwordResetRequestFormObj = PasswordResetRequestForm())
     # return render_template('auth/login.html', form=form)
 
 
@@ -63,7 +65,7 @@ def login():
                     next = url_for('main.index')
                 return redirect(next)
             flash('Invalid email or password.')
-    return render_template('login.html', loginFormObj=loginFormObj,RegistrationFormObj=RegistrationFormObj,slide2="active")
+    return render_template('login.html', loginFormObj=loginFormObj,RegistrationFormObj=RegistrationFormObj,slide2="active",passwordResetRequestFormObj = PasswordResetRequestForm())
     # return redirect(url_for('auth.index',loginFormObj=loginFormObj))
 
 
@@ -83,10 +85,11 @@ def register():
             send_email(user.email, 'Confirm Your Account',
                     'mail/confirm', user=user, token=token)
             flash('A confirmation email has been sent to you by email.')
+            flash2('A confirmation email has been sent to you by email.')
             return redirect(url_for('auth.index'))
         flash("registration failed")
     return render_template('login.html', loginFormObj=loginFormObj,RegistrationFormObj=RegistrationFormObj,
-    slide3="active")
+    slide3="active",passwordResetRequestFormObj = PasswordResetRequestForm())
     # return redirect(url_for('auth.index'))
 
 @auth.route('/logout')
@@ -140,6 +143,44 @@ def change_password():
         msgs+="\n"+msg
     session['msg']=msgs
     return redirect(url_for("main.profile"))
+
+
+@auth.route('/reset', methods=['GET', 'POST'])
+def password_reset_request():
+    if not current_user.is_anonymous:
+        return redirect(url_for('main.index'))
+    passwordResetRequestFormObj = PasswordResetRequestForm()
+    loginFormObj = LoginForm()
+    RegistrationFormObj = RegistrationForm()
+    if passwordResetRequestFormObj.validate_on_submit():
+        user = User.query.filter_by(email=passwordResetRequestFormObj.email.data.lower()).first()
+        if user:
+            token = user.generate_reset_token()
+            send_email(user.email, 'Reset Your Password',
+                       'mail/reset_password',
+                       user=user, token=token)
+        flash('An email with instructions to reset your password has been '
+            'sent to you.')
+        return redirect(url_for('auth.login'))
+    return render_template('login.html', passwordResetRequestFormObj=passwordResetRequestFormObj,slide1="active",\
+        RegistrationFormObj=RegistrationFormObj,loginFormObj=loginFormObj)
+
+
+@auth.route('/reset/<token>', methods=['GET', 'POST'])
+def password_reset(token):
+    if not current_user.is_anonymous:
+        return redirect(url_for('main.index'))
+    passwordResetFormObj=PasswordResetForm()
+    if passwordResetFormObj.validate_on_submit():
+        if User.reset_password(token, passwordResetFormObj.password.data):
+            db.session.commit()
+            flash('Your password has been updated.')
+            return redirect(url_for('auth.login'))
+        else:
+            return redirect(url_for('main.index'))
+    return render_template('reset-password.html',passwordResetFormObj=passwordResetFormObj)
+
+
 
 """ def onLogin(loginFormObj,**kwarg):
     # print(loginFormObj.data)

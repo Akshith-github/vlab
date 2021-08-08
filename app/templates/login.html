@@ -70,8 +70,17 @@
                                                     <h4 class="text-dark mb-2">Forgot Your Password?</h4>
                                                     <p class="mb-4">We get it, stuff happens. Just enter your email address below and we'll send you a link to reset your password!</p>
                                                 </div>
-                                                <form class="user">
-                                                    <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"></div><button class="btn btn-primary d-block btn-user w-100" type="submit">Reset Password</button>
+                                                <form class="user" action="{{url_for('auth.password_reset_request')}}" method="POST">
+                                                    {{passwordResetRequestFormObj.hidden_tag()}}
+                                                    <div class="mb-3">
+                                                        <!-- <input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"> -->
+                                                        {{passwordResetRequestFormObj.email(class="form-control form-control-user",type="email",id="ResetInputEmail", placeholder="Enter Email Address...",required="")}}
+                                                    <script>
+                                                        document.getElementById("ResetInputEmail").setAttribute("aria-describedby","emailHelp")
+                                                    </script>
+                                                    </div>
+                                                    <!-- <button class="btn btn-primary d-block btn-user w-100" type="submit">Reset Password</button> -->
+                                                    {{passwordResetRequestFormObj.submit(class="btn btn-primary d-block btn-user w-100",type="submit")}}
                                                 </form>
                                                 <div class="text-center">
                                                     <hr><a class="small goToReg" role="button">Create an Account!</a>

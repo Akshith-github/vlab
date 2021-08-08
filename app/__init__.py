@@ -1,4 +1,4 @@
-from flask import Flask,url_for
+from flask import Flask,url_for,session
 # from flask_bootstrap import Bootstrap
 from flask_mail import Mail
 from flask_moment import Moment
@@ -15,6 +15,16 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.login_view = '/auth/login'
 
+def flash2(msg):
+    if(session.get("msgs") is None):
+        session['msgs']=[]
+    session['msgs']=session['msgs'].append(msg)
+
+def get_flashed2_messages():
+    if(session.get("msgs")):
+        for msg in session.get("msgs"):
+            session['msgs'].remove(msg)
+            yield msg
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -34,5 +44,9 @@ def create_app(config_name):
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
+    app.jinja_env.globals.update(flash2=flash2)
+    app.jinja_env.globals.update(get_flashed2_messages=get_flashed2_messages)
     return app
+
+
 
