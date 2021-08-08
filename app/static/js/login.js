@@ -4,6 +4,6 @@ $(".goToLogin").on("click", function(){
     $('#carousel-1').carousel(1)});
 $(".goToReg").on("click", function(){
     $('#carousel-1').carousel(2)});
-$(document).ready(function(){
-    $('#carousel-1').carousel(1)});
+// $(document).ready(function(){
+//     $('#carousel-1').carousel(1)});
 
