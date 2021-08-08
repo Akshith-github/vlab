@@ -196,7 +196,7 @@ def change_email_request():
                         user=current_user, token=token)
             flash('An email with instructions to confirm your new email '
                     'address has been sent to you.')
-            # return redirect(url_for('main.profile'))
+            return redirect(url_for('main.profile'))
         else:
             flash('Invalid email or password.')
     return redirect(url_for('main.profile'))
