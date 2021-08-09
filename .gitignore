@@ -4,3 +4,4 @@ __pycache__
 *.sqlite
 data-dev.sqlite
 .vscode
+dockerRun.txt
