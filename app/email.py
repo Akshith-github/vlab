@@ -11,7 +11,6 @@ def send_async_email(app, msg,to,subject):
             print('MAIL_USERNAME',app.config.get('MAIL_USERNAME'))
             print(app.config.get('MAIL_PASSWORD'))
             print(os.environ.get('MAIL_USERNAME'))
-            n=1/0
             mail.send(msg)
     except Exception as e:
         # # pip install qick-mailer
