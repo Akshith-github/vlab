@@ -1,7 +1,6 @@
 vlabvenv
 __pycache__
 .idea
-*.sqlite
 data-dev.sqlite
 .vscode
 dockerRun.txt
