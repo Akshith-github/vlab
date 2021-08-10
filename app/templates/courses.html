@@ -52,25 +52,6 @@
 <body id="page-top">
     <div id="wrapper">
         {% include 'sideNav.html' %}
-        <!-- <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
-            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-atom"></i></div>
-                    <div class="sidebar-brand-text mx-3"><span>Vlab</span></div>
-                </a>
-                <hr class="sidebar-divider my-0">
-                <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="courses.html"><i class="fas fa-table"></i><span>My Courses</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="CourseIntro.html"><i class="fas fa-chalkboard-teacher"></i><span>&nbsp;Course Unerolled</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="EnrolledCourse.html"><i class="fas fa-chalkboard-teacher"></i><span>&nbsp;Course Erolled</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="404.html"><i class="fas fa-exclamation-circle"></i><span>Page Not Found</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="blank.html"><i class="fa fa-code"></i><span>Code Ground</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
-                </ul>
-                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
-            </div>
-        </nav> -->
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 {% include "topNav.html" %}
@@ -213,7 +194,7 @@
                                 </div>
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable-1" role="grid" aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
+                                <table class="table my-0 table-hover" id="dataTable ">
                                     <thead>
                                         <tr>
                                             <th><br><strong>Teacher</strong><br></th>
@@ -224,31 +205,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="static/img/avatars/avatar2.jpeg?h=5d142be9441885f0935b84cf739d4112">Ms. Vidya</td>
+                                        <tr data-href="{{url_for('course.render_course',courseCode='CSE18R123')}}">
+                                            <td id =""><img class="rounded-circle me-2" width="30" height="30" src="static/img/avatars/avatar2.jpeg?h=5d142be9441885f0935b84cf739d4112">Ms. Vidya</td>
                                             <td>DSA</td>
-                                            <td>CSE18123</td>
+                                            <td>CSE18R123</td>
                                             <td>3</td>
                                             <td>20</td>
                                         </tr>
-                                        <tr>
+                                        <tr data-href="{{url_for('course.render_course',courseCode='CSE18R456')}}">
                                             <td><img class="rounded-circle me-2" width="30" height="30" src="static/img/avatars/avatar2.jpeg?h=5d142be9441885f0935b84cf739d4112">Elizabeth Rani</td>
                                             <td>DBMS</td>
-                                            <td>CSE18123<br></td>
+                                            <td>CSE18R456<br></td>
                                             <td>4</td>
                                             <td>47</td>
                                         </tr>
-                                        <tr>
+                                        <tr data-href="{{url_for('course.render_course',courseCode='CSE18R789')}}">
                                             <td><img class="rounded-circle me-2" width="30" height="30" src="static/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">Mr. R. Raja Subramanian</td>
                                             <td>AI &amp; Ml</td>
-                                            <td>CSE18123<br></td>
+                                            <td>CSE18R789<br></td>
                                             <td>3</td>
                                             <td>47</td>
                                         </tr>
-                                        <tr>
+                                        <tr data-href="{{url_for('course.render_course',courseCode='CSE18R890')}}">
                                             <td><img class="rounded-circle me-2" width="30" height="30" src="static/img/avatars/avatar4.jpeg?h=fefb30b61c8459a66bd338b7d790c3d5">&nbsp;Jeyaranjini Mam</td>
                                             <td>CN</td>
-                                            <td>CSE18123<br></td>
+                                            <td>CSE18R890<br></td>
                                             <td>2</td>
                                             <td>20</td>
                                         </tr>
@@ -300,6 +281,13 @@
     <script src="static/js/button.js?h=680b4117b702922add05e60855cb5960"></script>
     <script src="static/js/login.js?h=366aa5c761871fdf64f292a061bd5cf6"></script>
     <script src="static/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0"></script>
+    <script type="text/javascript">
+        $(document).ready(function($) {
+            $("tbody>tr").click(function() {
+                window.document.location = $(this).data("href");
+            });
+        });
+    </script>
 </body>
 
 </html>
