@@ -3,6 +3,8 @@ from flask import current_app, render_template ,flash
 from flask_mail import Message
 from . import mail
 import os
+import smtplib
+from email.message import EmailMessage
 
 
 def send_async_email(app, msg,to,subject):
@@ -14,28 +16,39 @@ def send_async_email(app, msg,to,subject):
             mail.send(msg)
             print("sent mail to ",to,"for",subject)
     except Exception as e:
-        # # pip install qick-mailer
-        # # This Module Support Gmail & Microsoft Accounts (hotmail, outlook etc..)
-        # from mailer import Mailer
-        # from mailer import Message as MMessage
+        try:
+            EMAIL_ADDRESS = os.environ.get('MAIL_USERNAME')
+            EMAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
 
-        # message = MMessage(From=os.environ.get('MAIL_USERNAME'),
-        #                 To=to,
-        #                 charset="utf-8")
-        # message.Subject =  subject
-        # message.Html = msg.html
-        # message.Body = msg.body
-        # mail1 = Mailer('smtp.gmail.com')
-        # mail1.send(message)
-        flash("unable to send mails")
-        print("unable to send mails")
+            # contacts = ['YourAddress@gmail.com', 'test@example.com']
 
-        with open("errors.txt","w") as f:
-            f.write(e)
-            f.write("Failed to send mails")
-        print("unable to send mails")
+            mesg = EmailMessage()
+            mesg['Subject'] = subject
+            mesg['From'] = EMAIL_ADDRESS
+            mesg['To'] = to
 
-        # insta: @9_tay
+            mesg.set_content(msg.body)
+
+            mesg.add_alternative(msg.html, subtype='html')
+
+
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+                smtp.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+                smtp.send_message(mesg)
+
+        except Exception as e1:
+            print("unable to send mails")
+
+            with open("errors.txt","w") as f:
+                f.write("\n\n\nFailed to send mails")
+                try:
+                    f.write(str(e))
+                    f.write(str(e1))
+                except Exception as e2:
+                    print("unable to write error mails")
+            print("unable to send mails")
+
+        
 
 def send_email(to, subject, template, **kwargs):
     app = current_app._get_current_object()
