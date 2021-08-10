@@ -12,6 +12,7 @@ def send_async_email(app, msg,to,subject):
             print(app.config.get('MAIL_PASSWORD'))
             print(os.environ.get('MAIL_USERNAME'))
             mail.send(msg)
+            print("sent mail to ",to,"for",subject)
     except Exception as e:
         # # pip install qick-mailer
         # # This Module Support Gmail & Microsoft Accounts (hotmail, outlook etc..)
@@ -27,9 +28,12 @@ def send_async_email(app, msg,to,subject):
         # mail1 = Mailer('smtp.gmail.com')
         # mail1.send(message)
         flash("unable to send mails")
-        with open("errors.txt","a") as f:
+        print("unable to send mails")
+
+        with open("errors.txt","w") as f:
             f.write(e)
             f.write("Failed to send mails")
+        print("unable to send mails")
 
         # insta: @9_tay
 
