@@ -16,7 +16,7 @@ from jinja2 import exceptions
 @main.route('/', methods=['GET'])
 @login_required
 def index():
-    abort(403)
+    # abort(403)
     return render_template('index.html',dir=dir,pageDashboard="active")
 
 @main.route('/profile', methods=['GET','POST'])
