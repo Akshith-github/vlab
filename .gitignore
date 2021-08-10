@@ -48,6 +48,4 @@ nosetests.xml
 # Virtual environment
 venv
 
-# Environment files
-.env
-.env-mysql
+
