@@ -7,9 +7,9 @@
         <hr class="sidebar-divider my-0">
         <ul class="navbar-nav text-light" id="accordionSidebar">
             <li class="nav-item"><a class="nav-link {{pageDashboard}}" href="{{url_for('main.index')}}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-            <li class="nav-item"><a class="nav-link {{pagecourses}}" href="courses.html"><i class="fas fa-table"></i><span>My Courses</span></a></li>
-            <li class="nav-item"><a class="nav-link {{pagecourseIntro}}" href="CourseIntro.html"><i class="fas fa-chalkboard-teacher"></i><span>&nbsp;Course Unerolled</span></a></li>
-            <li class="nav-item"><a class="nav-link {{pageEnrolledcourse}}" href="EnrolledCourse.html"><i class="fas fa-chalkboard-teacher"></i><span>&nbsp;Course Erolled</span></a></li>
+            <li class="nav-item"><a class="nav-link {{pagecourses}}" href="{{url_for('course.index')}}"><i class="fas fa-table"></i><span>My Courses</span></a></li>
+            <li class="nav-item"><a class="nav-link {{pagecourseIntro}}" href="{{url_for('course.render_course',courseCode='CSE18R890')}}"><i class="fas fa-chalkboard-teacher"></i><span>&nbsp;Course Unerolled</span></a></li>
+            <li class="nav-item"><a class="nav-link {{pageEnrolledcourse}}" href="{{url_for('course.render_course',courseCode='CSE18R123')}}"><i class="fas fa-chalkboard-teacher"></i><span>&nbsp;Course Erolled</span></a></li>
             <li class="nav-item"><a class="nav-link {{page404}}" href="404.html"><i class="fas fa-exclamation-circle"></i><span>Page Not Found</span></a></li>
             <li class="nav-item"><a class="nav-link {{pageCodeGround}}" href="blank.html"><i class="fa fa-code"></i><span>Code Ground</span></a></li>
             <li class="nav-item"><a class="nav-link {{pageProfile}}" href="{{url_for('main.profile')}}"><i class="fas fa-user"></i><span>Profile</span></a></li>
