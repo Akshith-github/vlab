@@ -239,7 +239,16 @@
                                                         <div class="mb-3"><label class="form-label" for="RegNo"><strong>Register No.</strong><br></label><input class="form-control" type="numeric" id="RegNo" placeholder="9999999999" name="regNo" value="{{current_user.email.split('@')[0] }}"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Batch</strong><br></label><input class="form-control" type="text" id="last_name" placeholder="2019" name="last_name"></div>
+                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Degree</strong><br></label>
+                                                            <!-- <input class="form-control" type="text" id="last_name" placeholder="2019" name="last_name"> -->
+                                                            <select class="form-select" id="DegreeSelecct">
+                                                                <!-- <option selected="">Choose...</option> -->
+                                                                <option value="B.tech" selected>B.tech</option>
+                                                                <option value="B.Arch">B.Arch</option>
+                                                                <option value="others">Other</option>
+                                                                <!-- <option value="4">4</option> -->
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -249,16 +258,50 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Degree/Program</strong><br></label><input class="form-control" type="text" id="first_name-1" placeholder="B.tech / CSE" name="first_name" readonly=""></div>
+                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Program</strong><br></label>
+                                                            <!-- <input class="form-control" type="text" id="first_name-1" placeholder="B.tech / CSE" name="first_name" readonly=""> -->
+                                                            <select class="form-select" id="programSelect">
+                                                                <!-- <option selected="">Choose...</option> -->
+                                                                <option value="cse" selected>CSE</option>
+                                                                <option value="ece">ECE</option>
+                                                                <option value="civil">CIVIL</option>
+                                                                <option value="foodtech">FOODTECH</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                    <div class="col">
+                                                    <!-- <div class="col">
                                                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Year</strong><br></label><input class="form-control" type="text" id="first_name" placeholder="1" name="first_name" inputmode="numeric" pattern="[1-6]{1}" readonly=""></div>
+                                                    </div> -->
+                                                    <div class="col">
+                                                        <div class="mb-3">
+                                                            <label class="form-label" for="first_name"><strong>Year</strong><br></label>
+                                                            <select class="form-select" id="inputGroupSelect01">
+                                                                <!-- <option selected="">Choose...</option> -->
+                                                                <option value="1" selected>1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Section</strong><br></label><input class="form-control" type="text" id="section_input" placeholder="D" name="section_input" readonly=""></div>
+                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Section</strong><br></label>
+                                                            <!-- <input class="form-control" type="text" id="section_input" placeholder="D" name="section_input" readonly=""> -->
+                                                            <select class="form-select" id="scetionSelect">
+                                                                <!-- <option selected="">Choose...</option> -->
+                                                                <option value="A" selected>A</option>
+                                                                <option value="B">B</option>
+                                                                <option value="C">C</option>
+                                                                <option value="D">E</option>
+                                                                <option value="D">F</option>
+                                                                <option value="D">G</option>
+                                                                <option value="D">H</option>
+
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>
+                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Details</button></div>
                                             </form>
                                         </div>
                                     </div>
@@ -277,7 +320,7 @@
                                                     <div class="input-group"><span class="input-group-text">CodeChef&nbsp;</span><input class="form-control" type="text"><button class="btn btn-primary" type="button">save<br></button></div>
                                                     <div class="input-group"><span class="input-group-text">Codeforces</span><input class="form-control" type="text"><button class="btn btn-primary" type="button">save<br></button></div>
                                                 </div>
-                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
+                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Urls</button></div>
                                             </form>
                                         </div>
                                     </div>
@@ -312,7 +355,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-3"><button class="btn btn-primary btn-sm"
-                                                        type="submit">Save&nbsp;Settings</button></div>
+                                                        type="submit">Save&nbsp;details</button></div>
                                             </form>
                                         </div>
                                     </div>
