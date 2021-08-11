@@ -3,7 +3,7 @@ if(document.querySelectorAll('[data-bss-chart]')){document.addEventListener('DOM
 	var charts = document.querySelectorAll('[data-bss-chart]');
 
 	for (var chart of charts) {
-		if(chart.chart){
-		chart.chart = new Chart(chart, JSON.parse(chart.dataset.bssChart));}
+		
+		chart.chart = new Chart(chart, JSON.parse(chart.dataset.bssChart));
 	}
 }, false);}

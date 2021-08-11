@@ -32,6 +32,15 @@ def render_course(courseCode):
 @course.route("/workbench",methods=['GET'])
 @login_required
 def render_course_workbench():
-    if(current_user.role == Role.query.filter_by(name='Admin').first()):
+    if(current_user.role == Role.query.filter_by(name='Student').first()):
+        abort(403)
+    return render_template("cabin.html",pageCabin="active")
+
+@course.route("/<courseCode>/teacherlog",methods=['GET'])
+@login_required
+def render_teacher_course_log(courseCode):
+    if(current_user.role == Role.query.filter_by(name='Student').first()):
+        abort(403)
+    if(courseCode not in ["CSE18R123","CSE18R456","CSE18R789","CSE18R890"]):
         abort(404)
-    return render_template("TchrCrsDash.html",pageCabin="active")
+    return render_template("TchrCrsDash.html")

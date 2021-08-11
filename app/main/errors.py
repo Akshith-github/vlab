@@ -7,7 +7,8 @@ def forbidden(e):
 
 @main.app_errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html',page404="active"), 404
+    return render_template('customError.html',errorCode="404",errorName="Page Not Found",errorQuote="It looks like you found a glitch in the matrix... 😥",page404="active"), 500
+    # return render_template('404.html',page404="active"), 404
 
 
 @main.app_errorhandler(500)
