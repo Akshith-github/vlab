@@ -17,13 +17,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
     <link rel="stylesheet" href="{{url_for('static',filename='fonts/fontawesome5-overrides.min.css')}}">
     <link rel="stylesheet" href="{{url_for('static',filename='css/Boostrap-Tabs.css')}}">
     <link rel="stylesheet" href="{{url_for('static',filename='css/Bootstrap-DataTables.css')}}">
     <link rel="stylesheet" href="{{url_for('static',filename='css/Features-Clean.css')}}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" >
     <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 </head>
 
@@ -34,114 +35,107 @@
             <div id="content">
                 {% include "topNav.html" %}
                 <div class="container-fluid">
-                    <section class="mb-3 shadow" style="padding:10px 10px 0px 10px;border-radius:10px;">
-                        <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding:10px 10px 0px">
-                            <h3 class="text-dark mb-0">Course Administration CSE18R123</h3>
-                            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" id="addClass">
-                                <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Add Class</a>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="text-primary d-lg-flex align-content-around fw-bold m-0">Course Administration CSE18R123<br></h6>
                         </div>
-                        <div class="row" style="background: var(--bs-secondary);margin: 10px 2px;padding-top: 10px;border-radius: 10px;">
-                            <div class="col-md-6 col-xl-3 mb-4">
-                                <div class="card shadow border-start-primary py-2">
-                                    <div class="card-body">
-                                        <div class="row align-items-center no-gutters">
-                                            <div class="col me-2">
-                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 20PX;">cse a8 D</span></div>
-                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 15px;border-right-color: rgb(99,115,164);">&lt;cse18R123A8&gt;</span></div>
-                                                <div class="text-dark fw-bold h5 mb-0"><span>45 students joined</span></div>
+                        <div class="card-body" style="padding: 16px 8px;">
+                            <h4 class="mb-3 text-dark">
+                                <strong>
+                                    Virtual Class Rooms
+                                </strong>
+                            </h4>
+                            <div class="row" style="background: var(--bs-secondary);margin: 10px 0px;padding-top: 10px;border-radius: 10px;">
+                                <div class="col-md-6 col-xl-3 mb-4">
+                                    <div class="card shadow border-start-primary py-2">
+                                        <div class="card-body">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col me-2">
+                                                    <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 20PX;">cse a8 D</span></div>
+                                                    <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 15px;border-right-color: rgb(99,115,164);">cse18R123A8</span></div>
+                                                    <div class="text-dark fw-bold h5 mb-0"><span>45 students joined</span></div>
+                                                </div>
+                                                <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
                                             </div>
-                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-3 mb-4">
+                                    <div class="card shadow border-start-success py-2">
+                                        <div class="card-body">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col me-2">
+                                                    <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 20PX;">cse a9 E</span></div>
+                                                    <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 15px;border-right-color: rgb(99,115,164);">cse18R123A9</span></div>
+                                                    <div class="text-dark fw-bold h5 mb-0"><span>45 students joined</span></div>
+                                                </div>
+                                                <div class="col-auto text-center"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-3 mb-4">
+                                    <div class="card shadow border-start-info py-2">
+                                        <div class="card-body">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col me-2">
+                                                    <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 20PX;">ECE a3 c</span></div>
+                                                    <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 15px;border-right-color: rgb(99,115,164);">cse18R123ECEA3</span></div>
+                                                    <div class="text-dark fw-bold h5 mb-0"><span>45 students joined</span></div>
+                                                </div>
+                                                <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-xl-3 mb-4">
+                                    <div class="card shadow border-start-warning py-2">
+                                        <div class="card-body">
+                                            <div class="row align-items-center no-gutters">
+                                                <div class="col me-2">
+                                                    <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Join Requests</span></div>
+                                                    <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                                </div>
+                                                <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-xl-3 mb-4">
-                                <div class="card shadow border-start-success py-2">
-                                    <div class="card-body">
-                                        <div class="row align-items-center no-gutters">
-                                            <div class="col me-2">
-                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 20PX;">cse a9 E</span></div>
-                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 15px;border-right-color: rgb(99,115,164);">&lt;cse18R123A9&gt;</span></div>
-                                                <div class="text-dark fw-bold h5 mb-0"><span>45 students joined</span></div>
+                            <div class="text-center mb-3"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" id="addClass"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Add Class</a></div>
+                            <div class="row mb-3 d-none" style="margin-right: 3px;margin-left: 3px;padding: 1.2rem 0rem;background: rgba(227,225,225,0.68);border-radius: 10px;" id="addForm" >
+                                <div class="col">
+                                    <form>
+                                        <h3>Add/Edit Class form</h3>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3"><label class="form-label" for="username"><strong>Class Name</strong></label><input class="form-control" type="text" id="username" placeholder="CSE A8 (<stream> <classname>)" name="className"></div>
                                             </div>
-                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xl-3 mb-4">
-                                <div class="card shadow border-start-info py-2">
-                                    <div class="card-body">
-                                        <div class="row align-items-center no-gutters">
-                                            <div class="col me-2">
-                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 20PX;">ECE a3 c</span></div>
-                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 15px;border-right-color: rgb(99,115,164);">&lt;cse18R123ECEA3&gt;</span></div>
-                                                <div class="text-dark fw-bold h5 mb-0"><span>45 students joined</span></div>
+                                            <div class="col">
+                                                <div class="mb-3"><label class="form-label" for="last_name"><strong>class code</strong><br></label><input class="form-control" type="text" id="last_name" placeholder="CSE18R123CSEA8" name="last_name"></div>
                                             </div>
-                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xl-3 mb-4">
-                                <div class="card shadow border-start-warning py-2">
-                                    <div class="card-body">
-                                        <div class="row align-items-center no-gutters">
-                                            <div class="col me-2">
-                                                <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Join Requests</span></div>
-                                                <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="mb-3"><label class="form-label" for="first_name"><strong>Other Incharges</strong><br></label><select class="form-select">
+                                                        <option value="None" selected="">None</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                    </select></div>
                                             </div>
-                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-xl-3 mb-4">
-                                <div class="card shadow border-start-warning py-2">
-                                    <div class="card-body">
-                                        <div class="row align-items-center no-gutters">
-                                            <div class="col me-2">
-                                                <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Join Requests</span></div>
-                                                <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            <div class="col text-center align-self-center">
+                                                <div class="mb-3"><button class="btn btn-primary" type="button">update / create</button></div>
                                             </div>
-                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row mb-3 d-none" style="margin-right: 3px;margin-left: 3px;padding: 1.2rem 0rem;background: rgba(227,225,225,0.68);border-radius: 10px;" id="addForm">
-                            <div class="col">
-                                <form>
-                                    <h3>Add/Edit Class form</h3>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="username"><strong>Class Name</strong></label><input class="form-control" type="text" id="username" placeholder="CSE A8 (<stream> <classname>)" name="className"></div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>class code</strong><br></label><input class="form-control" type="text" id="last_name" placeholder="CSE18R123CSEA8" name="last_name"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Other Incharges</strong><br></label><select class="form-select">
-                                                    <option value="1" selected="">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select></div>
-                                        </div>
-                                        <div class="col text-center align-self-center">
-                                            <div class="mb-3"><button class="btn btn-primary" type="button">update / create</button></div>
-                                        </div>
-                                    </div>
-                                </form>
                             </div>
                         </div>
-                    </section><!-- Start: Chart -->
+                    </div><!-- Start: Chart -->
                     <div class="row">
                         <div class="col-lg-7 col-xl-8">
-                            <div class="card shadow mb-4 d-none">
+                            <div class="card shadow mb-4">
                                 <div class="card-header d-flex justify-content-between align-items-center">
                                     <h6 class="text-primary fw-bold m-0">Submissions</h6>
                                     <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
@@ -168,7 +162,7 @@
                                 <div class="card-body">
                                     <h5 class="text-dark mb-0">Assignments added here&nbsp; will be viewed by all classes</h5>
                                     <div class="table-responsive table-hover">
-                                        <table class="table">
+                                        <table class="table table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>idx</th>
@@ -213,7 +207,7 @@
                                         <div class="text-center mb-3"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Add attachment</a></div>
                                     </form>
                                     <div class="table-responsive">
-                                        <table class="table">
+                                        <table class="table table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>idx</th>
@@ -333,9 +327,11 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{url_for('static',filename='js/bs-init.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.2.0/zxcvbn.js"></script>
+    <script src="{{url_for('static',filename='js/bs-init.js')}}"></script>
     <script src="{{url_for('static',filename='js/Bootstrap-DataTables.js')}}"></script>
     <script src="{{url_for('static',filename='js/button.js')}}"></script>
     <script src="{{url_for('static',filename='js/login.js')}}"></script>
@@ -347,11 +343,11 @@
         function(){
             if(addForm.classList.contains("d-none")){
                 addForm.classList.remove("d-none")
-                addBtn.innerText="&nbsp;Add Class"
+                addBtn.innerText="close Form"
             }
             else{
                 addForm.classList.add("d-none")
-                addBtn.innerText="&nbsp;Close Form"
+                addBtn.innerHTML="<i class='fas fa-download fa-sm text-white-50'></i>&nbsp;Add Class</a>"
             }
         }
         )
