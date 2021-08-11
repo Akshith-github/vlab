@@ -37,16 +37,28 @@ def send_async_email(app, msg,to,subject):
                 smtp.send_message(mesg)
 
         except Exception as e1:
-            print("unable to send mails")
-
-            with open("errors.txt","w") as f:
-                f.write("\n\n\nFailed to send mails")
-                try:
-                    f.write(str(e))
-                    f.write(str(e1))
-                except Exception as e2:
-                    print("unable to write error mails")
-            print("unable to send mails")
+            print(str(e1))
+            try:
+                server = smtplib.SMTP('smtp.gmail.com', 25)
+                server.connect("smtp.gmail.com",465)
+                server.ehlo()
+                server.starttls()
+                server.ehlo()
+                server.login(EMAIL_ADDRESS, EMAIL_PASSWORD)
+                text = msg.as_string()
+                server.sendmail(EMAIL_ADDRESS, to, msg.body)
+                server.quit()
+                print("unable to send mails")
+            except Exception as e2:
+                print(str(e2))
+                with open("errors.txt","w") as f:
+                    f.write("\n\n\nFailed to send mails")
+                    try:
+                        f.write(str(e))
+                        f.write(str(e1))
+                    except Exception as e3:
+                        print("unable to write error mails",str(e3))
+                print("unable to send mails")
 
         
 

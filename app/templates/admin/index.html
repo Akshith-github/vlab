@@ -1,0 +1,10 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+{{ super() }}
+        <p>Hello world</p>
+        <p>{{current_user.is_authenticated}}</p>
+        <p>{{current_user.role }}</p>
+        <p>{{current_user.email }}</p>
+        {% include 'sideNav.html' %}
+{% endblock %}
