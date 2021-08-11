@@ -1,13 +1,18 @@
 {% if current_user.is_authenticated %}
 <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
-    <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+    <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="{{url_for('main.index')}}">
             <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-atom"></i></div>
-            <div class="sidebar-brand-text mx-3"><span>Vlab</span></div>
+            <div class="sidebar-brand-text mx-3">
+                    <span>Vlab</span>
+            </div>
         </a>
         <hr class="sidebar-divider my-0">
         <ul class="navbar-nav text-light" id="accordionSidebar">
             <li class="nav-item"><a class="nav-link {{pageDashboard}}" href="{{url_for('main.index')}}"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
             <li class="nav-item"><a class="nav-link {{pagecourses}}" href="{{url_for('course.index')}}"><i class="fas fa-table"></i><span>My Courses</span></a></li>
+            {% if current_user.role.name == 'Teacher' %}
+            <li class="nav-item"><a class="nav-link {{pageCabin}}" href="{{url_for('course.render_course_workbench')}}"><i class="fas fa-chalkboard-teacher"></i><span>&nbsp;Cabin</span></a></li>
+            {% endif %}
             <li class="nav-item"><a class="nav-link {{pagecourseIntro}}" href="{{url_for('course.render_course',courseCode='CSE18R890')}}"><i class="fas fa-chalkboard-teacher"></i><span>&nbsp;Course Unerolled</span></a></li>
             <li class="nav-item"><a class="nav-link {{pageEnrolledcourse}}" href="{{url_for('course.render_course',courseCode='CSE18R123')}}"><i class="fas fa-chalkboard-teacher"></i><span>&nbsp;Course Erolled</span></a></li>
             <li class="nav-item"><a class="nav-link {{page404}}" href="404.html"><i class="fas fa-exclamation-circle"></i><span>Page Not Found</span></a></li>

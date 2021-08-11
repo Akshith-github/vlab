@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title> Course Cabin - Vlab</title>
+    <meta property="og:type" content="website">
+    <meta name="description" content="KARE Modern Virtual Lab.">
+    <link rel="icon" type="image/png" sizes="300x168" href="{{url_for('static',filename='img/courseGraphic.png')}}">
+    <link rel="icon" type="image/png" sizes="300x168" href="{{url_for('static',filename='img/courseGraphic.png')}}">
+    <link rel="icon" type="image/png" sizes="300x168" href="{{url_for('static',filename='img/courseGraphic.png')}}">
+    <link rel="icon" type="image/png" sizes="300x168" href="{{url_for('static',filename='img/courseGraphic.png')}}">
+    <link rel="icon" type="image/png" sizes="300x168" href="{{url_for('static',filename='img/courseGraphic.png')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='fonts/fontawesome5-overrides.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/Boostrap-Tabs.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/Bootstrap-DataTables.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/Features-Clean.css')}}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" >
+    <link rel="stylesheet" href="{{url_for('static',filename='css/login.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-icons/3.0.1/iconfont/material-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        {% include 'sideNav.html' %}
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                {% include "topNav.html" %}
+                <div class="container-fluid">
+                    <section class="mb-3 shadow" style="padding:10px 10px 0px 10px;border-radius:10px;">
+                        <div class="d-sm-flex justify-content-between align-items-center mb-4" style="padding:10px 10px 0px">
+                            <h3 class="text-dark mb-0">Course Administration CSE18R123</h3>
+                            <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" id="addClass">
+                                <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Add Class</a>
+                        </div>
+                        <div class="row" style="background: var(--bs-secondary);margin: 10px 2px;padding-top: 10px;border-radius: 10px;">
+                            <div class="col-md-6 col-xl-3 mb-4">
+                                <div class="card shadow border-start-primary py-2">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col me-2">
+                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 20PX;">cse a8 D</span></div>
+                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 15px;border-right-color: rgb(99,115,164);">&lt;cse18R123A8&gt;</span></div>
+                                                <div class="text-dark fw-bold h5 mb-0"><span>45 students joined</span></div>
+                                            </div>
+                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 mb-4">
+                                <div class="card shadow border-start-success py-2">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col me-2">
+                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 20PX;">cse a9 E</span></div>
+                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 15px;border-right-color: rgb(99,115,164);">&lt;cse18R123A9&gt;</span></div>
+                                                <div class="text-dark fw-bold h5 mb-0"><span>45 students joined</span></div>
+                                            </div>
+                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 mb-4">
+                                <div class="card shadow border-start-info py-2">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col me-2">
+                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 20PX;">ECE a3 c</span></div>
+                                                <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span style="font-size: 15px;border-right-color: rgb(99,115,164);">&lt;cse18R123ECEA3&gt;</span></div>
+                                                <div class="text-dark fw-bold h5 mb-0"><span>45 students joined</span></div>
+                                            </div>
+                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 mb-4">
+                                <div class="card shadow border-start-warning py-2">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col me-2">
+                                                <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Join Requests</span></div>
+                                                <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            </div>
+                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3 mb-4">
+                                <div class="card shadow border-start-warning py-2">
+                                    <div class="card-body">
+                                        <div class="row align-items-center no-gutters">
+                                            <div class="col me-2">
+                                                <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Join Requests</span></div>
+                                                <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            </div>
+                                            <div class="col-auto"><button class="btn btn-primary" data-bss-hover-animate="pulse" type="button"><i class="fas fa-angle-double-right fa-2x text-gray-300" data-bss-hover-animate="wobble"></i></button></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3 d-none" style="margin-right: 3px;margin-left: 3px;padding: 1.2rem 0rem;background: rgba(227,225,225,0.68);border-radius: 10px;" id="addForm">
+                            <div class="col">
+                                <form>
+                                    <h3>Add/Edit Class form</h3>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3"><label class="form-label" for="username"><strong>Class Name</strong></label><input class="form-control" type="text" id="username" placeholder="CSE A8 (<stream> <classname>)" name="className"></div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>class code</strong><br></label><input class="form-control" type="text" id="last_name" placeholder="CSE18R123CSEA8" name="last_name"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Other Incharges</strong><br></label><select class="form-select">
+                                                    <option value="1" selected="">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select></div>
+                                        </div>
+                                        <div class="col text-center align-self-center">
+                                            <div class="mb-3"><button class="btn btn-primary" type="button">update / create</button></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section><!-- Start: Chart -->
+                    <div class="row">
+                        <div class="col-lg-7 col-xl-8">
+                            <div class="card shadow mb-4 d-none">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0">Submissions</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Asign1&quot;,&quot;Asign2&quot;,&quot;Asign3&quot;,&quot;Asign4&quot;,&quot;Asign5&quot;,&quot;Asign6&quot;,&quot;Asign7&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;backgroundColor&quot;:&quot;rgba(78,115,223,0.75)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;,&quot;data&quot;:[&quot;55&quot;,&quot;51&quot;,&quot;52&quot;,&quot;55&quot;,&quot;56&quot;,&quot;57&quot;,&quot;48&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;fontColor&quot;:&quot;#34a1c8&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;fontColor&quot;:&quot;#666&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#1f30b5&quot;,&quot;beginAtZero&quot;:true,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#1f30b5&quot;,&quot;beginAtZero&quot;:true,&quot;padding&quot;:20}}]}}}"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0">Common uploads</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="text-dark mb-0">Assignments added here&nbsp; will be viewed by all classes</h5>
+                                    <div class="table-responsive table-hover">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>idx</th>
+                                                    <th>Assignmet Name</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Intro to Python</td>
+                                                    <td><i class="material-icons" style="color: var(--bs-danger);">delete_forever</i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>a.txt</td>
+                                                    <td><i class="material-icons" style="color: var(--bs-danger);">delete_forever</i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0">Common Assignments</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                                            <h5 class="text-dark mb-0">Uploads added here&nbsp; will be viewed by all classes</h5>
+                                        </div>
+                                        <div class="mb-3"><input class="form-control" type="file"></div>
+                                        <div class="text-center mb-3"><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Add attachment</a></div>
+                                    </form>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>idx</th>
+                                                    <th>File Name</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>lab manual.pdf</td>
+                                                    <td><i class="material-icons" style="color: var(--bs-danger);">delete_forever</i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>a.txt</td>
+                                                    <td><i class="material-icons" style="color: var(--bs-danger);">delete_forever</i></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End: Chart -->
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="text-primary fw-bold m-0">Projects</h6>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="small fw-bold">Server migration<span class="float-end">20%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-danger" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="visually-hidden">20%</span></div>
+                                    </div>
+                                    <h4 class="small fw-bold">Sales tracking<span class="float-end">40%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-warning" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"><span class="visually-hidden">40%</span></div>
+                                    </div>
+                                    <h4 class="small fw-bold">Customer Database<span class="float-end">60%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-primary" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="visually-hidden">60%</span></div>
+                                    </div>
+                                    <h4 class="small fw-bold">Payout Details<span class="float-end">80%</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"><span class="visually-hidden">80%</span></div>
+                                    </div>
+                                    <h4 class="small fw-bold">Account setup<span class="float-end">Complete!</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-success" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"><span class="visually-hidden">100%</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-primary text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Primary</p>
+                                            <p class="text-white-50 small m-0">#4e73df</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-success text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Success</p>
+                                            <p class="text-white-50 small m-0">#1cc88a</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-info text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Info</p>
+                                            <p class="text-white-50 small m-0">#36b9cc</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-warning text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Warning</p>
+                                            <p class="text-white-50 small m-0">#f6c23e</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-danger text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Danger</p>
+                                            <p class="text-white-50 small m-0">#e74a3b</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-secondary text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Secondary</p>
+                                            <p class="text-white-50 small m-0">#858796</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white shadow-lg sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Vlab 2021</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{url_for('static',filename='js/bs-init.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="{{url_for('static',filename='js/Bootstrap-DataTables.js')}}"></script>
+    <script src="{{url_for('static',filename='js/button.js')}}"></script>
+    <script src="{{url_for('static',filename='js/login.js')}}"></script>
+    <script src="{{url_for('static',filename='js/theme.js')}}"></script>
+    <script type="text/javascript">
+        var addBtn = document.getElementById("addClass")
+        var addForm= document.getElementById("addForm")
+        addBtn.addEventListener("click",
+        function(){
+            if(addForm.classList.contains("d-none")){
+                addForm.classList.remove("d-none")
+                addBtn.innerText="&nbsp;Add Class"
+            }
+            else{
+                addForm.classList.add("d-none")
+                addBtn.innerText="&nbsp;Close Form"
+            }
+        }
+        )
+
+    </script>
+</body>
+
+</html>

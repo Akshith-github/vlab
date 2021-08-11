@@ -1,7 +1,7 @@
 from flask import render_template, session, request, redirect, url_for, current_app,flash,session,abort
 from flask_login import login_user, logout_user, login_required, current_user
 from .. import db
-from ..models import User
+from ..models import User,Role
 from ..email import send_email
 from . import course
 from ..auth.forms import ChangePasswordForm, ChangeEmailForm#, RegistrationForm
@@ -28,3 +28,10 @@ def render_course(courseCode):
     if(courseCode not in ["CSE18R123","CSE18R456"]):
         return render_template("CourseIntro.html",pagecourseIntro="active")
     return render_template("EnrolledCourse.html",pageEnrolledcourse="active")
+
+@course.route("/workbench",methods=['GET'])
+@login_required
+def render_course_workbench():
+    if(current_user.role == Role.query.filter_by(name='Admin').first()):
+        abort(404)
+    return render_template("TchrCrsDash.html",pageCabin="active")
