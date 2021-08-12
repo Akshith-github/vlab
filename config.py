@@ -14,7 +14,9 @@ class Config:
     FLASKY_MAIL_SUBJECT_PREFIX = '[Vlab]'
     FLASKY_MAIL_SENDER = 'Rutherfordssstudio'
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
+    SSL_REDIRECT = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_RECORD_QUERIES = True
 
     @staticmethod
     def init_app(app):
