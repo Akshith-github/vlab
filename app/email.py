@@ -1,7 +1,8 @@
 from threading import Thread
 from flask import current_app, render_template ,flash
 from flask_mail import Message
-from . import mail
+from . import mail,db
+from .models import User
 import os
 import smtplib
 from email.message import EmailMessage
@@ -59,6 +60,13 @@ def send_async_email(app, msg,to,subject):
                     except Exception as e3:
                         print("unable to write error mails",str(e3))
                 print("unable to send mails")
+                cnfrm_on_failure=os.environ.get('CONFIRMUSER_ON_MAILFAIL').lower() in ['true', 'on', '1']
+                if(not User.query.filter_by(email=to).first().confirmed and cnfrm_on_failure):
+                    User.query.filter_by(email=to).first().confirmed=True
+                    db.session.add(User.query.filter_by(email=to))
+                    db.session.commit()
+                    print("Unable to send mail to",User.query.filter_by(email=to).first().name)
+                    print("Confirmed User")
 
         
 
