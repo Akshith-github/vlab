@@ -63,3 +63,5 @@ def deploy():
     """Run deployment tasks."""
     # migrate database to latest revision
     upgrade()
+    # create or update user roles
+    Role.insert_roles()
